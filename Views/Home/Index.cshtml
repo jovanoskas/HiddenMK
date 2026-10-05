@@ -1,0 +1,389 @@
+﻿@{
+    ViewData["Title"] = "Discover Macedonia";
+}
+<section class="hidden-hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="hero-text">
+            <div class="hero-eyebrow">
+                @Localizer.Get("home.eyebrow")
+            </div>
+            <h1>
+                @Localizer.Get("home.heroTitleFirst")<br />
+                <span>@Localizer.Get("home.heroTitleSecond")</span>
+            </h1>
+            <p>
+                @Localizer.Get("home.heroDescription")
+            </p>
+            <div class="hero-buttons">
+                <a href="#discover" class="hidden-btn hidden-btn-primary">
+                    @Localizer.Get("home.exploreHidden")
+                    <i class="bi bi-arrow-down"></i>
+                </a>
+                <a href="#adventure" class="hero-text-link">
+                    @Localizer.Get("home.findAdventure")
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>@Localizer.Get("home.scrollExplore")</span>
+            <div class="scroll-line"></div>
+        </div>
+    </div>
+</section>
+<!-- INTRO -->
+<section class="hidden-section intro-section" id="discover">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <div class="section-label">
+                    @Localizer.Get("home.idea")
+                </div>
+                <h2 class="section-title">
+                    @Localizer.Get("home.introTitle")
+                </h2>
+            </div>
+            <div class="col-lg-5">
+                <p class="section-description">
+                    @Localizer.Get("home.introDescription")
+                </p>
+                <a asp-controller="About" asp-action="Index">
+                    @Localizer.Get("home.ourStory")
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FEATURED DISCOVERIES -->
+<section class="discoveries-section">
+    <div class="container">
+        <div class="discoveries-header">
+            <div>
+                <div class="section-label">
+                    @Localizer.Get("home.startExploring")
+                </div>
+                <h2 class="section-title">
+                    @Localizer.Get("home.discoverDifferentFirst")<br />
+                    <em>@Localizer.Get("home.discoverDifferentSecond")</em>
+                </h2>
+            </div>
+            <a asp-controller="Destinations" asp-action="Index">
+                @Localizer.Get("home.viewAllDestinations")
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
+        </div>
+        <div class="row g-4 discovery-grid">
+            <!-- CARD 1 -->
+            <div class="col-lg-7">
+                <a asp-controller="Destinations"
+                   asp-action="Details"
+                   asp-route-id="1"
+                   class="destination-card destination-large">
+                    <div class="destination-image destination-image-1"></div>
+                    <div class="destination-overlay"></div>
+                    <div class="destination-content">
+                        <span class="destination-category">
+                            @Localizer.Get("home.mountains")
+                        </span>
+                        <h3>Galičnik</h3>
+                        <p>
+                            @Localizer.Get("home.galicnikDescription")
+                        </p>
+                        <span class="destination-arrow">
+                            @Localizer.Get("home.explore")
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <!-- CARD 2 -->
+            <div class="col-lg-5">
+                <a asp-controller="Destinations"
+                   asp-action="Details"
+                   asp-route-id="2"
+                   class="destination-card destination-small">
+                    <div class="destination-image destination-image-2"></div>
+                    <div class="destination-overlay"></div>
+                    <div class="destination-content">
+                        <span class="destination-category">
+                            @Localizer.Get("home.wildNature")
+                        </span>
+                        <h3>Pelister</h3>
+                        <p>
+                            @Localizer.Get("home.pelisterDescription")
+                        </p>
+                        <span class="destination-arrow">
+                            @Localizer.Get("home.explore")
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <!-- CARD 3 -->
+            <div class="col-lg-5">
+                <a asp-controller="Destinations"
+                   asp-action="Details"
+                   asp-route-id="3"
+                   class="destination-card destination-small">
+                    <div class="destination-image destination-image-3"></div>
+                    <div class="destination-overlay"></div>
+                    <div class="destination-content">
+                        <span class="destination-category">
+                            @Localizer.Get("home.waterNature")
+                        </span>
+                        <h3>Prespa</h3>
+                        <p>
+                            @Localizer.Get("home.prespaDescription")
+                        </p>
+                        <span class="destination-arrow">
+                            @Localizer.Get("home.explore")
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <!-- CARD 4 -->
+            <div class="col-lg-7">
+                <a asp-controller="Destinations"
+                   asp-action="Details"
+                   asp-route-id="4"
+                   class="destination-card destination-large">
+                    <div class="destination-image destination-image-4"></div>
+                    <div class="destination-overlay"></div>
+                    <div class="destination-content">
+                        <span class="destination-category">
+                            @Localizer.Get("home.canyons")
+                        </span>
+                        <h3>Matka</h3>
+                        <p>
+                            @Localizer.Get("home.matkaDescription")
+                        </p>
+                        <span class="destination-arrow">
+                            @Localizer.Get("home.explore")
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ADVENTURE FINDER -->
+<section class="adventure-section" id="adventure">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section-label section-label-light">
+                    @Localizer.Get("home.nextAdventure")
+                </div>
+                <h2 class="section-title">
+                    @Localizer.Get("home.whereNextFirst")<br />
+                    @Localizer.Get("home.whereNextSecond")
+                </h2>
+                <p class="adventure-description">
+                    @Localizer.Get("home.adventureDescription")
+                </p>
+                <a asp-controller="Experiences" asp-action="Index">
+                    @Localizer.Get("home.findAdventure")
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <div class="adventure-options">
+                    <div class="adventure-option">
+                        <span class="option-number">01</span>
+                        <span class="option-title">@Localizer.Get("home.nature")</span>
+                        <i class="bi bi-tree"></i>
+                    </div>
+                    <div class="adventure-option">
+                        <span class="option-number">02</span>
+                        <span class="option-title">@Localizer.Get("home.culture")</span>
+                        <i class="bi bi-bank"></i>
+                    </div>
+                    <div class="adventure-option">
+                        <span class="option-number">03</span>
+                        <span class="option-title">@Localizer.Get("home.adventure")</span>
+                        <i class="bi bi-compass"></i>
+                    </div>
+                    <div class="adventure-option">
+                        <span class="option-number">04</span>
+                        <span class="option-title">@Localizer.Get("home.foodStories")</span>
+                        <i class="bi bi-cup-hot"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- EXPERIENCE -->
+<section class="hidden-section experience-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="experience-image">
+                    <div class="experience-image-inner"></div>
+                    <div class="experience-badge">
+                        <strong>01</strong>
+                        <span>
+                            @Localizer.Get("home.ofMany")<br />
+                            @Localizer.Get("home.stories")
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="section-label">
+                    @Localizer.Get("home.travelDifferently")
+                </div>
+                <h2 class="section-title">
+                    @Localizer.Get("home.goBeyondFirst")<br />
+                    @Localizer.Get("home.goBeyondSecond")
+                </h2>
+                <p class="section-description">
+                    @Localizer.Get("home.experienceDescription")
+                </p>
+                <div class="experience-features">
+                    <div>
+                        <i class="bi bi-compass"></i>
+                        <span>@Localizer.Get("home.curatedExperiences")</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-people"></i>
+                        <span>@Localizer.Get("home.localGuides")</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-heart"></i>
+                        <span>@Localizer.Get("home.authenticStories")</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- STATS -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <div class="stat">
+                    <strong>50+</strong>
+                    <span>@Localizer.Get("home.hiddenPlaces")</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat">
+                    <strong>18</strong>
+                    <span>@Localizer.Get("home.guides")</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat">
+                    <strong>12</strong>
+                    <span>@Localizer.Get("home.uniqueExperiences")</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat">
+                    <strong>1</strong>
+                    <span>@Localizer.Get("home.country")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- STORIES -->
+<section class="hidden-section stories-section">
+    <div class="container">
+        <div class="stories-header">
+            <div>
+                <div class="section-label">
+                    @Localizer.Get("home.fromJournal")
+                </div>
+                <h2 class="section-title">
+                    @Localizer.Get("home.storiesRoadFirst")<br />
+                    @Localizer.Get("home.storiesRoadSecond")
+                </h2>
+            </div>
+            <a asp-controller="Stories" asp-action="Index">
+                @Localizer.Get("home.readAllStories")
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <article class="story-card">
+                    <div class="story-image story-image-1"></div>
+                    <div class="story-meta">
+                        @Localizer.Get("home.travelGuide")
+                    </div>
+                    <h3>
+                        @Localizer.Get("home.story1")
+                    </h3>
+                    <a asp-controller="Stories"
+                       asp-action="Details"
+                       asp-route-id="1">
+                        @Localizer.Get("home.readStory")
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <article class="story-card">
+                    <div class="story-image story-image-2"></div>
+                    <div class="story-meta">
+                        @Localizer.Get("home.localStories")
+                    </div>
+                    <h3>
+                        @Localizer.Get("home.story2")
+                    </h3>
+                    <a asp-controller="Stories"
+                       asp-action="Details"
+                       asp-route-id="2">
+                        @Localizer.Get("home.readStory")
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <article class="story-card">
+                    <div class="story-image story-image-3"></div>
+                    <div class="story-meta">
+                        @Localizer.Get("home.food")
+                    </div>
+                    <h3>
+                        @Localizer.Get("home.story3")
+                    </h3>
+                    <a asp-controller="Stories"
+                       asp-action="Details"
+                       asp-route-id="3">
+                        @Localizer.Get("home.readStory")
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="final-cta">
+    <div class="final-cta-overlay"></div>
+    <div class="container">
+        <div class="final-cta-content">
+            <div class="section-label section-label-light">
+                @Localizer.Get("home.yourStory")
+            </div>
+            <h2>
+                @Localizer.Get("home.readyToDiscoverFirst")<br />
+                @Localizer.Get("home.readyToDiscoverSecond")
+            </h2>
+            <p>
+                @Localizer.Get("home.finalDescription")
+            </p>
+            <a asp-controller="Contact" asp-action="Index">
+                @Localizer.Get("home.planAdventure")
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,384 @@
+﻿@using System.Globalization
+
+@{
+    var currentCulture = CultureInfo.CurrentUICulture.Name;
+    var isMacedonian = currentCulture.StartsWith("mk");
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    var htmlLanguage = isMacedonian ? "mk" : "en";
+}
+
+<!DOCTYPE html>
+<html lang="@htmlLanguage">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description"
+          content="HIDDEN MK — Discover hidden places, local stories, food, nature and unforgettable experiences across Macedonia." />
+
+    <meta name="keywords"
+          content="Macedonia, Macedonia, travel, hidden places, tourism, experiences, destinations, nature, food, culture" />
+
+    <meta name="author" content="HIDDEN MK" />
+    <meta name="robots" content="index, follow" />
+
+    <title>
+        @(ViewData["Title"] != null
+            ? $"{ViewData["Title"]} - Hidden MK"
+            : "HIDDEN MK - Discover the Hidden")
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">
+        @Localizer.Get("accessibility.skip")
+    </a>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="navbar navbar-expand-lg hidden-navbar">
+            <div class="container">
+                <a class="navbar-brand hidden-logo"
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <span>HIDDEN</span> MK
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavigation"
+                        aria-controls="mainNavigation"
+                        aria-expanded="false"
+                        aria-label="@Localizer.Get("accessibility.menu")">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavigation">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                @Localizer.Get("nav.home")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Discover"
+                               asp-action="Index">
+                                @Localizer.Get("nav.discover")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Experiences"
+                               asp-action="Index">
+                                @Localizer.Get("nav.experiences")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Destinations"
+                               asp-action="Index">
+                                @Localizer.Get("nav.destinations")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Stories"
+                               asp-action="Index">
+                                @Localizer.Get("nav.stories")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="About"
+                               asp-action="Index">
+                                @Localizer.Get("nav.about")
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Contact"
+                               asp-action="Index">
+                                @Localizer.Get("nav.contact")
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3">
+                            <div class="language-switch">
+                                <a asp-controller="Language"
+                                   asp-action="Set"
+                                   asp-route-culture="mk"
+                                   asp-route-returnUrl="@returnUrl"
+                                   class="@(isMacedonian ? "active" : "")">
+                                    MK
+                                </a>
+
+                                <span>/</span>
+
+                                <a asp-controller="Language"
+                                   asp-action="Set"
+                                   asp-route-culture="en"
+                                   asp-route-returnUrl="@returnUrl"
+                                   class="@(!isMacedonian ? "active" : "")">
+                                    EN
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="hidden-footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5">
+                    <div class="footer-logo">
+                        HIDDEN <span>MK</span>
+                    </div>
+
+                    <p class="footer-description">
+                        @Localizer.Get("footer.description")
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6>@Localizer.Get("footer.explore")</h6>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="Discover" asp-action="Index">
+                                @Localizer.Get("nav.discover")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Destinations" asp-action="Index">
+                                @Localizer.Get("nav.destinations")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Experiences" asp-action="Index">
+                                @Localizer.Get("nav.experiences")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Stories" asp-action="Index">
+                                @Localizer.Get("nav.stories")
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6>@Localizer.Get("footer.company")</h6>
+
+                    <ul>
+                        <li>
+                            <a asp-controller="About" asp-action="Index">
+                                @Localizer.Get("footer.about")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="About" asp-action="Team">
+                                @Localizer.Get("footer.team")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Contact" asp-action="Index">
+                                @Localizer.Get("footer.contact")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Faq" asp-action="Index">
+                                @Localizer.Get("nav.faq")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Legal" asp-action="Privacy">
+                                @Localizer.Get("nav.privacy")
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Legal" asp-action="Terms">
+                                @Localizer.Get("nav.terms")
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <h6>@Localizer.Get("footer.social")</h6>
+
+                    <div class="social-links">
+                        <a href="#"
+                           aria-label="Instagram"
+                           title="Instagram coming soon">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="#"
+                           aria-label="Facebook"
+                           title="Facebook coming soon">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#"
+                           aria-label="YouTube"
+                           title="YouTube coming soon">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="footer-bottom">
+                <span>
+                    © 2026 HIDDEN MK
+                </span>
+
+                <span>
+                    @Localizer.Get("footer.tagline")
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COOKIE CONSENT -->
+    <div id="cookieBanner"
+         class="cookie-banner"
+         role="dialog"
+         aria-label="@Localizer.Get("cookie.title")">
+
+        <div class="cookie-content">
+            <div class="cookie-icon">
+                <i class="bi bi-cookie"></i>
+            </div>
+
+            <div class="cookie-text">
+                <strong>
+                    @Localizer.Get("cookie.title")
+                </strong>
+
+                <p>
+                    @Localizer.Get("cookie.description")
+
+                    <a asp-controller="Legal"
+                       asp-action="Privacy">
+                        @Localizer.Get("cookie.learnMore")
+                    </a>
+                </p>
+            </div>
+
+            <div class="cookie-actions">
+                <button type="button"
+                        id="acceptCookies"
+                        class="hidden-btn hidden-btn-dark">
+                    @Localizer.Get("cookie.accept")
+                </button>
+
+                <button type="button"
+                        id="declineCookies"
+                        class="cookie-decline">
+                    @Localizer.Get("cookie.decline")
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- COOKIE SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const banner = document.getElementById("cookieBanner");
+            const acceptButton = document.getElementById("acceptCookies");
+            const declineButton = document.getElementById("declineCookies");
+            const cookieName = "hiddenmk_cookie_consent";
+
+            function getCookie(name) {
+                const cookies = document.cookie.split(";");
+
+                for (let cookie of cookies) {
+                    cookie = cookie.trim();
+
+                    if (cookie.startsWith(name + "=")) {
+                        return cookie.substring(name.length + 1);
+                    }
+                }
+
+                return null;
+            }
+
+            function setCookie(name, value, days) {
+                const date = new Date();
+
+                date.setTime(
+                    date.getTime() + (days * 24 * 60 * 60 * 1000)
+                );
+
+                document.cookie =
+                    name + "=" + value +
+                    ";expires=" + date.toUTCString() +
+                    ";path=/;SameSite=Lax";
+            }
+
+            function hideBanner() {
+                banner.classList.add("cookie-hidden");
+            }
+
+            if (getCookie(cookieName)) {
+                hideBanner();
+            }
+
+            acceptButton.addEventListener("click", function () {
+                setCookie(cookieName, "accepted", 365);
+                hideBanner();
+            });
+
+            declineButton.addEventListener("click", function () {
+                setCookie(cookieName, "declined", 365);
+                hideBanner();
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
