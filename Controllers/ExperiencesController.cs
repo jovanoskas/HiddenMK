@@ -10,70 +10,84 @@ public class ExperiencesController : Controller
         new Experience
         {
             Id = 1,
-            Name = "Mountain Sunrise",
+            Name = "Sunrise above Mavrovo",
             Category = "Adventure",
-            Description =
-                "Wake up before dawn, follow a mountain trail and watch the first light reach the peaks.",
-            ImageUrl =
-                "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85",
+            Description = "Leave Mavrovo while it is still dark and walk up toward Bistra.",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/93/Snow_at_Bistra_Mountain%2C_Macedonia.jpg",
             Duration = "1 day",
             Difficulty = "Moderate",
-            Location = "Bistra Mountains",
+            Location = "Mavrovo / Bistra",
             Season = "Spring – Autumn"
         },
-
         new Experience
         {
             Id = 2,
-            Name = "Taste of the Village",
+            Name = "Food around Mavrovo",
             Category = "Food & Culture",
-            Description =
-                "Spend a day with local hosts, discover traditional recipes and experience Macedonian village life.",
-            ImageUrl =
-                "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=85",
+            Description = "A day of stopping to eat, not a booked lunch with a host.",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/21/Ajvar.jpg",
             Duration = "1 day",
             Difficulty = "Easy",
-            Location = "Western Macedonia",
+            Location = "Mavrovo villages",
             Season = "All year"
         },
-
         new Experience
         {
             Id = 3,
-            Name = "Forgotten Macedonia",
+            Name = "Lazaropole and Galicnik",
             Category = "Culture",
-            Description =
-                "Explore old villages, forgotten paths and places where traces of another era are still visible.",
-            ImageUrl =
-                "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85",
+            Description = "Two villages above Mavrovo. Sleep in Mavrovo if the houses up top are shut.",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/1/14/Lazaropole_panorama.jpg",
             Duration = "Weekend",
             Difficulty = "Easy",
-            Location = "Western Macedonia",
+            Location = "Lazaropole and Galicnik",
             Season = "Spring – Autumn"
         },
-
         new Experience
         {
             Id = 4,
-            Name = "Into the Wild",
+            Name = "Two days on Pelister",
             Category = "Nature",
-            Description =
-                "Leave the roads behind and spend a day exploring forests, trails and remote mountain landscapes.",
-            ImageUrl =
-                "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85",
+            Description = "More than the view from the parking lot.",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/80/Pelister_Molika.jpg",
             Duration = "2 days",
             Difficulty = "Hard",
-            Location = "Pelister",
+            Location = "Pelister, above Bitola",
             Season = "Summer – Autumn"
         }
     };
 
-
-    public IActionResult Index()
+    public IActionResult Index(string? category, string? duration, string? difficulty)
     {
-        return View(Experiences);
-    }
+        IEnumerable<Experience> list = Experiences;
 
+        if (!string.IsNullOrWhiteSpace(category))
+        {
+            list = list.Where(e => CategoryFits(e.Category, category));
+        }
+
+        if (!string.IsNullOrWhiteSpace(duration))
+        {
+            list = list.Where(e => e.Duration.Equals(duration, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (!string.IsNullOrWhiteSpace(difficulty))
+        {
+            list = list.Where(e => e.Difficulty.Equals(difficulty, StringComparison.OrdinalIgnoreCase));
+        }
+
+        var results = list.ToList();
+        var filtered = !string.IsNullOrWhiteSpace(category)
+            || !string.IsNullOrWhiteSpace(duration)
+            || !string.IsNullOrWhiteSpace(difficulty);
+
+        ViewBag.Category = category ?? "";
+        ViewBag.Duration = duration ?? "";
+        ViewBag.Difficulty = difficulty ?? "";
+        ViewBag.NoResults = filtered && results.Count == 0;
+
+        return View(results);
+    }
 
     public IActionResult Details(int id)
     {
@@ -87,24 +101,25 @@ public class ExperiencesController : Controller
         return View(experience);
     }
 
-
+    // old form posted here; keep it so a refresh of an old tab still works
     [HttpPost]
-    public IActionResult FindAdventure(
-        string category,
-        string duration,
-        string difficulty)
+    public IActionResult FindAdventure(string? category, string? duration, string? difficulty)
     {
-        var experience = Experiences.FirstOrDefault(e =>
-            e.Category.Contains(category, StringComparison.OrdinalIgnoreCase)
-            || e.Difficulty.Contains(difficulty, StringComparison.OrdinalIgnoreCase)
-            || e.Duration.Contains(duration, StringComparison.OrdinalIgnoreCase)
-        );
+        return RedirectToAction(nameof(Index), new { category, duration, difficulty });
+    }
 
-        experience ??= Experiences.First();
+    private static bool CategoryFits(string actual, string filter)
+    {
+        if (filter.Equals("Food", StringComparison.OrdinalIgnoreCase))
+        {
+            return actual.Contains("Food", StringComparison.OrdinalIgnoreCase);
+        }
 
-        return RedirectToAction(
-            nameof(Details),
-            new { id = experience.Id }
-        );
+        if (filter.Equals("Culture", StringComparison.OrdinalIgnoreCase))
+        {
+            return actual.Equals("Culture", StringComparison.OrdinalIgnoreCase);
+        }
+
+        return actual.Contains(filter, StringComparison.OrdinalIgnoreCase);
     }
 }

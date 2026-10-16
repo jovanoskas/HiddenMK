@@ -13,11 +13,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description"
-          content="HIDDEN MK — Discover hidden places, local stories, food, nature and unforgettable experiences across Macedonia." />
+    <meta name="description" content="@Localizer.Get("meta.description")" />
 
     <meta name="keywords"
-          content="Macedonia, Macedonia, travel, hidden places, tourism, experiences, destinations, nature, food, culture" />
+          content="Macedonia, Galicnik, Pelister, Prespa, Matka, travel" />
 
     <meta name="author" content="HIDDEN MK" />
     <meta name="robots" content="index, follow" />
@@ -166,6 +165,10 @@
                     <p class="footer-description">
                         @Localizer.Get("footer.description")
                     </p>
+                    <p class="footer-meta">
+                        <a href="mailto:hello@hiddenmk.com">hello@hiddenmk.com</a><br />
+                        <a href="tel:+38978221640">+389 78 221 640</a>
+                    </p>
                 </div>
 
                 <div class="col-lg-2 col-md-4">
@@ -244,21 +247,24 @@
                     <h6>@Localizer.Get("footer.social")</h6>
 
                     <div class="social-links">
-                        <a href="#"
-                           aria-label="Instagram"
-                           title="Instagram coming soon">
+                        <a href="https://www.instagram.com/hiddenmk.skopje"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
 
-                        <a href="#"
-                           aria-label="Facebook"
-                           title="Facebook coming soon">
+                        <a href="https://www.facebook.com/hiddenmk.skopje"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="Facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
 
-                        <a href="#"
-                           aria-label="YouTube"
-                           title="YouTube coming soon">
+                        <a href="https://www.youtube.com/@@hiddenmkskopje"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="YouTube">
                             <i class="bi bi-youtube"></i>
                         </a>
                     </div>
@@ -273,7 +279,8 @@
                 </span>
 
                 <span>
-                    @Localizer.Get("footer.tagline")
+                    @Localizer.Get("footer.tagline")<br />
+                    @Localizer.Get("footer.credit")
                 </span>
             </div>
         </div>

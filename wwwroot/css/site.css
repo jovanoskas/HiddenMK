@@ -189,6 +189,15 @@ a:hover {
     line-height: 1.8;
 }
 
+.footer-meta {
+    margin-top: 18px;
+    line-height: 1.8;
+}
+
+.footer-meta a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .hidden-footer h6 {
     margin-bottom: 20px;
 
@@ -414,7 +423,7 @@ a:hover {
     align-items: center;
 
     background-image:
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/20090714_Galicnik_panoramic.jpg/1920px-20090714_Galicnik_panoramic.jpg");
 
     background-size: cover;
     background-position: center;
@@ -624,22 +633,22 @@ a:hover {
 
 .destination-image-1 {
     background-image:
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Galicnik%2C_village%2C_Macedonia.jpg/1920px-Galicnik%2C_village%2C_Macedonia.jpg");
 }
 
 .destination-image-2 {
     background-image:
-        url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1000&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Pelister_National_Park%2C_Autumn_15.jpg/1920px-Pelister_National_Park%2C_Autumn_15.jpg");
 }
 
 .destination-image-3 {
     background-image:
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/c/ca/Prespa_Lake.jpg");
 }
 
 .destination-image-4 {
     background-image:
-        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/1/18/Matka_canyon.jpg");
 }
 
 .destination-overlay {
@@ -751,6 +760,9 @@ a:hover {
     cursor: pointer;
 
     transition: 0.3s ease;
+
+    color: inherit;
+    text-decoration: none;
 }
 
 .adventure-option:hover {
@@ -791,7 +803,7 @@ a:hover {
     inset: 0;
 
     background-image:
-        url("https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=1200&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/9/93/Snow_at_Bistra_Mountain%2C_Macedonia.jpg");
 
     background-size: cover;
     background-position: center;
@@ -918,17 +930,17 @@ a:hover {
 
 .story-image-1 {
     background-image:
-        url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/20090714_Galicnik_panoramic.jpg/1920px-20090714_Galicnik_panoramic.jpg");
 }
 
 .story-image-2 {
     background-image:
-        url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/1/14/Lazaropole_panorama.jpg");
 }
 
 .story-image-3 {
     background-image:
-        url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/2/21/Ajvar.jpg");
 }
 
 .story-meta {
@@ -974,7 +986,7 @@ a:hover {
     align-items: center;
 
     background-image:
-        url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=2000&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Pelister_National_Park%2C_Autumn_15.jpg/1920px-Pelister_National_Park%2C_Autumn_15.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1113,7 +1125,7 @@ a:hover {
             rgba(10, 18, 14, 0.7),
             rgba(10, 18, 14, 0.7)
         ),
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85");
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Galicnik%2C_village%2C_Macedonia.jpg/1920px-Galicnik%2C_village%2C_Macedonia.jpg");
 }
 
 .destinations-intro {
@@ -1373,7 +1385,14 @@ a:hover {
             rgba(10, 18, 14, 0.7),
             rgba(10, 18, 14, 0.7)
         ),
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/9/93/Snow_at_Bistra_Mountain%2C_Macedonia.jpg");
+}
+
+.experience-card > a img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
 }
 
 .experience-card {
@@ -1594,7 +1613,7 @@ a:hover {
             rgba(10, 18, 14, 0.7),
             rgba(10, 18, 14, 0.7)
         ),
-        url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=2000&q=85");
+        url("https://upload.wikimedia.org/wikipedia/commons/1/14/Lazaropole_panorama.jpg");
 }
 
 .stories-page-header {
@@ -1760,6 +1779,28 @@ a:hover {
     color: var(--hidden-green);
 }
 
+.destination-info-card > div {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hidden-border);
+}
+
+.destination-info-card > div:last-child {
+    border-bottom: 0;
+}
+
+.destination-info-card span {
+    flex: 0 0 9rem;
+    color: var(--hidden-muted);
+    font-size: 0.85rem;
+}
+
+.destination-info-card strong {
+    font-weight: 600;
+}
+
 .story-content p {
     margin-bottom: 30px;
 
@@ -1845,7 +1886,7 @@ a:hover {
     padding: 60px;
     background:
         linear-gradient(rgba(20, 48, 38, 0.82), rgba(20, 48, 38, 0.92)),
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80")
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/20090714_Galicnik_panoramic.jpg/1920px-20090714_Galicnik_panoramic.jpg")
         center / cover;
     color: var(--hidden-white);
     display: flex;
@@ -1900,6 +1941,10 @@ a:hover {
     margin-bottom: 25px;
 }
 
+.value-card > i {
+    margin-right: 10px;
+}
+
 .value-card h3 {
     font-size: 1.4rem;
     margin-bottom: 15px;
@@ -1938,7 +1983,23 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+
+.team-avatar.av-2 {
+    background: #1d3b2f;
+    color: #f3efe5;
+}
+
+.team-avatar.av-3 {
+    background: #8d7358;
+    color: #fff;
+}
+
+.team-avatar.av-4 {
+    background: #101814;
+    color: #f3efe5;
 }
 
 .team-role {
@@ -2081,49 +2142,25 @@ a:hover {
     box-shadow: 0 0 0 0.15rem rgba(34, 82, 64, 0.12);
 }
 
-.contact-map-placeholder {
-    min-height: 380px;
-    position: relative;
-
-    background:
-        linear-gradient(
-            rgba(20, 48, 38, 0.78),
-            rgba(20, 48, 38, 0.78)
-        ),
-        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=80")
-        center / cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.contact-map {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: 0;
+    background: #d8cfbd;
 }
 
-.contact-map-overlay {
-    text-align: center;
-    color: var(--hidden-white);
-}
-
-.contact-map-pin {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: var(--hidden-white);
-    color: var(--hidden-green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-}
-
-.contact-map-overlay h3 {
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
-
-.contact-map-overlay p {
+.contact-map-note {
     margin: 0;
-    opacity: 0.85;
+    padding: 16px 20px 22px;
+    background: var(--hidden-dark);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+}
+
+.contact-map-note a {
+    color: #fff;
+    margin-left: 8px;
 }
 
 @media (max-width: 767px) {
@@ -2132,8 +2169,8 @@ a:hover {
         padding: 30px 20px;
     }
 
-    .contact-map-placeholder {
-        min-height: 300px;
+    .contact-map {
+        height: 280px;
     }
 }
 /* 
@@ -2375,7 +2412,7 @@ a:hover {
             rgba(20, 48, 38, 0.88),
             rgba(20, 48, 38, 0.88)
         ),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80")
+        url("https://upload.wikimedia.org/wikipedia/commons/c/ca/Prespa_Lake.jpg")
         center / cover;
 
     color: var(--hidden-white);
@@ -2561,4 +2598,43 @@ a:hover {
 
 .skip-link:focus {
     left: 10px;
+}
+
+.discover-feature-card {
+    display: block;
+    height: 100%;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.discover-feature-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.discover-feature-galicnik {
+    background-image: url("https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Galicnik%2C_village%2C_Macedonia.jpg/1920px-Galicnik%2C_village%2C_Macedonia.jpg");
+}
+
+.discover-feature-prespa {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/ca/Prespa_Lake.jpg");
+}
+
+.discover-feature-matka {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/18/Matka_canyon.jpg");
+}
+
+.discover-feature-content {
+    padding: 16px 16px 22px;
+}
+
+.discover-feature-content h3 {
+    margin: 6px 0 8px;
+    font-size: 1.35rem;
+}
+
+.discover-feature-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
 }

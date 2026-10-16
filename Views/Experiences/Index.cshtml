@@ -1,5 +1,145 @@
 @model IEnumerable<HiddenMK.Models.Experience>
-@{ ViewData["Title"] = Localizer.Get("experiences.title"); }
-<section class="page-hero experiences-hero"><div class="container"><div class="section-label section-label-light">@Localizer.Get("experiences.heroLabel")</div><h1>@Html.Raw(Localizer.Get("experiences.heroTitle"))</h1><p>@Localizer.Get("experiences.heroText")</p></div></section>
-<section class="hidden-section"><div class="container"><div class="experiences-page-header"><div><div class="section-label">@Localizer.Get("experiences.label")</div><h2 class="section-title">@Html.Raw(Localizer.Get("experiences.heading"))</h2></div><p class="section-description">@Localizer.Get("experiences.intro")</p></div><div class="row g-4">@foreach(var experience in Model){<div class="col-lg-6"><article class="experience-card"><a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id"><img src="@experience.ImageUrl" alt="@Localizer.Get($"experience.{experience.Id}.name")" /></a><div class="experience-card-content"><div class="blog-card-meta"><span>@Localizer.Get($"experience.{experience.Id}.category")</span><span>@Localizer.Get($"experience.{experience.Id}.duration")</span></div><h3><a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id">@Localizer.Get($"experience.{experience.Id}.name")</a></h3><p>@Localizer.Get($"experience.{experience.Id}.description")</p><a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id" class="hidden-text-link">@Localizer.Get("common.learnmore") <i class="bi bi-arrow-up-right"></i></a></div></article></div>}</div></div></section>
-<section class="hidden-section hidden-section-light"><div class="container"><div class="finder-card"><span class="section-eyebrow">@Localizer.Get("experiences.findLabel")</span><h2>@Localizer.Get("experiences.findTitle")</h2><form asp-controller="Experiences" asp-action="FindAdventure" method="post"><div class="row g-4"><div class="col-md-4"><label class="form-label">@Localizer.Get("experiences.category")</label><select name="category" class="form-select hidden-input"><option value="">@Localizer.Get("experiences.any")</option><option value="Adventure">@Localizer.Get("experiences.adventure")</option><option value="Culture">@Localizer.Get("experiences.culture")</option><option value="Food">@Localizer.Get("experiences.food")</option><option value="Nature">@Localizer.Get("experiences.nature")</option></select></div><div class="col-md-4"><label class="form-label">@Localizer.Get("experiences.duration")</label><select name="duration" class="form-select hidden-input"><option value="">@Localizer.Get("experiences.any")</option><option value="1 day">@Localizer.Get("experiences.day")</option><option value="Weekend">@Localizer.Get("experiences.weekend")</option></select></div><div class="col-md-4"><label class="form-label">@Localizer.Get("experiences.difficulty")</label><select name="difficulty" class="form-select hidden-input"><option value="">@Localizer.Get("experiences.any")</option><option value="Easy">@Localizer.Get("experiences.easy")</option><option value="Moderate">@Localizer.Get("experiences.moderate")</option><option value="Hard">@Localizer.Get("experiences.hard")</option></select></div><div class="col-12"><button type="submit" class="hidden-btn hidden-btn-dark">@Localizer.Get("experiences.findButton") <i class="bi bi-arrow-right"></i></button></div></div></form></div></div></section>
+@{
+    ViewData["Title"] = Localizer.Get("experiences.title");
+    var category = ViewBag.Category as string ?? "";
+    var duration = ViewBag.Duration as string ?? "";
+    var difficulty = ViewBag.Difficulty as string ?? "";
+}
+
+<section class="page-hero experiences-hero">
+    <div class="container">
+        <div class="section-label section-label-light">@Localizer.Get("experiences.heroLabel")</div>
+        <h1>@Html.Raw(Localizer.Get("experiences.heroTitle"))</h1>
+        <p>@Localizer.Get("experiences.heroText")</p>
+    </div>
+</section>
+
+<section class="hidden-section">
+    <div class="container">
+        <div class="experiences-page-header">
+            <div>
+                <div class="section-label">@Localizer.Get("experiences.label")</div>
+                <h2 class="section-title">@Html.Raw(Localizer.Get("experiences.heading"))</h2>
+            </div>
+            <p class="section-description">@Localizer.Get("experiences.intro")</p>
+        </div>
+
+        @if (ViewBag.NoResults == true)
+        {
+            <p class="section-text">@Localizer.Get("experiences.none")</p>
+        }
+
+        <div class="row g-4">
+            @foreach (var experience in Model)
+            {
+                <div class="col-lg-6">
+                    <article class="experience-card">
+                        <a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id">
+                            <img src="@experience.ImageUrl" alt="@Localizer.Get($"experience.{experience.Id}.name")" />
+                        </a>
+                        <div class="experience-card-content">
+                            <div class="blog-card-meta">
+                                <span>@Localizer.Get($"experience.{experience.Id}.category")</span>
+                                <span>@Localizer.Get($"experience.{experience.Id}.duration")</span>
+                            </div>
+                            <h3>
+                                <a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id">
+                                    @Localizer.Get($"experience.{experience.Id}.name")
+                                </a>
+                            </h3>
+                            <p>@Localizer.Get($"experience.{experience.Id}.description").Split("\n\n")[0]</p>
+                            <a asp-controller="Experiences" asp-action="Details" asp-route-id="@experience.Id" class="hidden-text-link">
+                                @Localizer.Get("common.learnmore") <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="hidden-section hidden-section-light">
+    <div class="container">
+        <div class="finder-card">
+            <span class="section-eyebrow">@Localizer.Get("experiences.findLabel")</span>
+            <h2>@Localizer.Get("experiences.findTitle")</h2>
+            <form asp-controller="Experiences" asp-action="Index" method="get">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer.Get("experiences.category")</label>
+                        <select name="category" class="form-select hidden-input">
+                            @foreach (var opt in new (string Value, string Key)[]
+                            {
+                                ("", "experiences.any"),
+                                ("Adventure", "experiences.adventure"),
+                                ("Culture", "experiences.culture"),
+                                ("Food", "experiences.food"),
+                                ("Nature", "experiences.nature")
+                            })
+                            {
+                                if (category == opt.Value)
+                                {
+                                    <option value="@opt.Value" selected>@Localizer.Get(opt.Key)</option>
+                                }
+                                else
+                                {
+                                    <option value="@opt.Value">@Localizer.Get(opt.Key)</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer.Get("experiences.duration")</label>
+                        <select name="duration" class="form-select hidden-input">
+                            @foreach (var opt in new (string Value, string Key)[]
+                            {
+                                ("", "experiences.any"),
+                                ("1 day", "experiences.day"),
+                                ("Weekend", "experiences.weekend"),
+                                ("2 days", "experiences.twoDays")
+                            })
+                            {
+                                if (duration == opt.Value)
+                                {
+                                    <option value="@opt.Value" selected>@Localizer.Get(opt.Key)</option>
+                                }
+                                else
+                                {
+                                    <option value="@opt.Value">@Localizer.Get(opt.Key)</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer.Get("experiences.difficulty")</label>
+                        <select name="difficulty" class="form-select hidden-input">
+                            @foreach (var opt in new (string Value, string Key)[]
+                            {
+                                ("", "experiences.any"),
+                                ("Easy", "experiences.easy"),
+                                ("Moderate", "experiences.moderate"),
+                                ("Hard", "experiences.hard")
+                            })
+                            {
+                                if (difficulty == opt.Value)
+                                {
+                                    <option value="@opt.Value" selected>@Localizer.Get(opt.Key)</option>
+                                }
+                                else
+                                {
+                                    <option value="@opt.Value">@Localizer.Get(opt.Key)</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="hidden-btn hidden-btn-dark">
+                            @Localizer.Get("experiences.findButton") <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Discover Macedonia";
+    ViewData["Title"] = Localizer.Get("nav.home");
 }
 <section class="hidden-hero">
     <div class="hero-overlay"></div>
@@ -87,7 +87,7 @@
                         <span class="destination-category">
                             @Localizer.Get("home.mountains")
                         </span>
-                        <h3>Galičnik</h3>
+                        <h3>@Localizer.Get("destination.1.name")</h3>
                         <p>
                             @Localizer.Get("home.galicnikDescription")
                         </p>
@@ -110,7 +110,7 @@
                         <span class="destination-category">
                             @Localizer.Get("home.wildNature")
                         </span>
-                        <h3>Pelister</h3>
+                        <h3>@Localizer.Get("destination.2.name")</h3>
                         <p>
                             @Localizer.Get("home.pelisterDescription")
                         </p>
@@ -133,7 +133,7 @@
                         <span class="destination-category">
                             @Localizer.Get("home.waterNature")
                         </span>
-                        <h3>Prespa</h3>
+                        <h3>@Localizer.Get("destination.3.name")</h3>
                         <p>
                             @Localizer.Get("home.prespaDescription")
                         </p>
@@ -156,7 +156,7 @@
                         <span class="destination-category">
                             @Localizer.Get("home.canyons")
                         </span>
-                        <h3>Matka</h3>
+                        <h3>@Localizer.Get("destination.4.name")</h3>
                         <p>
                             @Localizer.Get("home.matkaDescription")
                         </p>
@@ -192,26 +192,26 @@
             </div>
             <div class="col-lg-6">
                 <div class="adventure-options">
-                    <div class="adventure-option">
+                    <a class="adventure-option" asp-controller="Experiences" asp-action="Index" asp-route-category="Nature">
                         <span class="option-number">01</span>
                         <span class="option-title">@Localizer.Get("home.nature")</span>
                         <i class="bi bi-tree"></i>
-                    </div>
-                    <div class="adventure-option">
+                    </a>
+                    <a class="adventure-option" asp-controller="Experiences" asp-action="Index" asp-route-category="Culture">
                         <span class="option-number">02</span>
                         <span class="option-title">@Localizer.Get("home.culture")</span>
                         <i class="bi bi-bank"></i>
-                    </div>
-                    <div class="adventure-option">
+                    </a>
+                    <a class="adventure-option" asp-controller="Experiences" asp-action="Index" asp-route-category="Adventure">
                         <span class="option-number">03</span>
                         <span class="option-title">@Localizer.Get("home.adventure")</span>
                         <i class="bi bi-compass"></i>
-                    </div>
-                    <div class="adventure-option">
+                    </a>
+                    <a class="adventure-option" asp-controller="Experiences" asp-action="Index" asp-route-category="Food">
                         <span class="option-number">04</span>
                         <span class="option-title">@Localizer.Get("home.foodStories")</span>
                         <i class="bi bi-cup-hot"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -268,19 +268,19 @@
         <div class="row">
             <div class="col-md-3 col-6">
                 <div class="stat">
-                    <strong>50+</strong>
+                    <strong>4</strong>
                     <span>@Localizer.Get("home.hiddenPlaces")</span>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat">
-                    <strong>18</strong>
-                    <span>@Localizer.Get("home.guides")</span>
+                    <strong>4</strong>
+                    <span>@Localizer.Get("home.stories")</span>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat">
-                    <strong>12</strong>
+                    <strong>4</strong>
                     <span>@Localizer.Get("home.uniqueExperiences")</span>
                 </div>
             </div>

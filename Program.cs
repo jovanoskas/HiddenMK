@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization();
 builder.Services.AddSingleton<HiddenMK.Services.LocalizationService>();
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 var supportedCultures = new[]
