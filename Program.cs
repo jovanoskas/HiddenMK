@@ -1,4 +1,5 @@
 using System.Globalization;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization();
 builder.Services.AddSingleton<HiddenMK.Services.LocalizationService>();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto |
+        ForwardedHeaders.XForwardedHost;
+    options.KnownIPNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 var app = builder.Build();
+app.UseForwardedHeaders();
 var supportedCultures = new[]
 {
     new CultureInfo("en"),
